@@ -1,0 +1,60 @@
+﻿@model List<PitonProject.Models.Todo>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="col"   style="text-align:center"text-center">
+    <h2 style="align-content:center" class="display-4">Görev Yöneticisi</h2>
+    <div class="col">
+    <div class="row">
+        <div class="col-md-12">
+            <table align="center" class="table table-hover table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <th>Başlık</th>
+                        <th>Detay</th>
+                        <th>Tarih</th>
+                        <th>Tip</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.User.Name</td>
+                            <td>@item.Title</td>
+                            <td>@item.Description</td>
+                            <td>@item.Date</td>
+                            <td>@item.TodoType</td>
+                            <td>
+                                <a class="btn btn-outline-warning btn-block" asp-controller="Home" asp-action="UpdateTodo" asp-route-id="@item.Id">Güncelle</a>
+                            </td>
+                            <td>
+                                <a  class="btn btn-outline-danger btn-block" asp-controller="Home" asp-action="DeleteTodo" asp-route-id="@item.Id">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class=col-md-1>
+        </div>
+        <div class=col-md-4>
+            <a type="button" class="btn btn-warning btn-block" href="/Home/CreateTodo">Yeni Kayıt Oluştur</a>
+        </div>
+        <div class=col-md-4>
+            <a type="button" class="btn btn-info btn-block" href="/Home/CreateUser">Yeni Kullanıcı Oluştur</a>
+        </div>
+        <div class=col-md-1>
+        </div>
+
+    </div>
+    </div>
+
+
+</div>
